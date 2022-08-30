@@ -6,4 +6,9 @@ spring:
       host: localhost
       port: 27017
       database: customers_db
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8082/eureka/
+    
       
