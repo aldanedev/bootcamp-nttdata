@@ -1,0 +1,26 @@
+version: '3.9'
+services:
+  configService:
+    image: config-service:latest
+    ports:
+      - 8081:8081
+  registryService:
+    image: registry-service:latest
+    ports:
+      - 8082:8082
+    environment:
+      - CONFIG_SERVICE_URL=http://root:root@172.29.82.1:8081
+    restart: always
+    depends_on:
+      - configService
+  gatewayService:
+    image: gateway-service:latest
+    ports:
+      - 8080:8080
+    environment:
+      - CONFIG_SERVICE_URL=http://root:root@172.29.82.1:8081
+      - REGISTRY_SERVICE_URL=http://172.29.82.1:8082/eureka
+    restart: always
+    depends_on:
+      - configService
+      - registryService
