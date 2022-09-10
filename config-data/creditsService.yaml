@@ -1,0 +1,12 @@
+server:
+  port: 8084
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: credits_db
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${REGISTRY_SERVICE_URL}
