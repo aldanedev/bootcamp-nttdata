@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: creditsService
+  config:
+    import: configserver:${CONFIG_SERVICE_URL}
