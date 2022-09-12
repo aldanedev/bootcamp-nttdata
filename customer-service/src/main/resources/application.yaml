@@ -2,4 +2,4 @@ spring:
   application:
     name: customerService
   config:
-    import: configserver:http://root:root@localhost:8081
+    import: configserver:${CONFIG_SERVICE_URL}
