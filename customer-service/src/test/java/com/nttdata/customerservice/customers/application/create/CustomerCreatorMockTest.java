@@ -9,7 +9,6 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.nttdata.customerservice.customers.application.CustomerResponse;
 import com.nttdata.customerservice.customers.domain.Customer;
 import com.nttdata.customerservice.customers.domain.CustomerRepository;
 
@@ -26,14 +25,14 @@ public class CustomerCreatorMockTest {
   public void setup() {
     MockitoAnnotations.openMocks(this);
     creator = new CustomerCreator(customerRepository);
-    Customer customer = Customer.create("name");
+    Customer customer = Customer.create("name", "BUSINESS");
     Customer customerReturn = Customer.builder().id("id").name("name").build();
     Mockito.when(customerRepository.save(customer)).thenReturn(Mono.just((customerReturn)));
   }
 
   @Test
   public void whenCreateCustomer_thenCustomerIsCreated() {
-    creator.create("name").subscribe(customerResponse -> {
+    creator.create("name", "PERSONAL").subscribe(customerResponse -> {
       assertEquals(customerResponse.getId(), "id");
       assertEquals(customerResponse.getName(), "name");
     });
