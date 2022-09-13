@@ -6,6 +6,17 @@ spring:
       host: localhost
       port: 27017
       database: account_banks_db
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      group-id: account-banks-service
+topic:
+  name: account-banks
+auto:
+  create:
+    topic: true
 eureka:
   client:
     serviceUrl:
