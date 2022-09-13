@@ -15,3 +15,11 @@ spring:
           uri: lb://customerService
           predicates:
             - Path=/api/v1/customers/**
+        - id: creditsService
+          uri: lb://creditsService
+          predicates:
+            - Path=/api/v1/credits/**
+        - id: accountBanksService
+          uri: lb://accountBanksService
+          predicates:
+            - Path=/api/v1/accountBanks/**
